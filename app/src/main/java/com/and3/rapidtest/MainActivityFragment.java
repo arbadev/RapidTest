@@ -28,6 +28,6 @@ public class MainActivityFragment extends Fragment {
 
     @OnClick(R.id.buttonBegin)
     public void onClick(View view) {
-        startActivity(new Intent(getContext(), QuestionListActivity.class));
+        startActivity(new Intent(getContext(), QuestionActivity.class));
     }
 }

@@ -5,7 +5,10 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="label_intro">33sp</dimen>
     <dimen name="question">30sp</dimen>
-    <dimen name="choice">20sp</dimen>
-    <dimen name="padding_choice">10dp</dimen>
-    <dimen name="button_corner_radius">3dp</dimen>
+    <dimen name="choice">17sp</dimen>
+    <dimen name="padding_choice">9dp</dimen>
+    <dimen name="button_corner_radius">6dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="margin_choice">5dp</dimen>
 </resources>
