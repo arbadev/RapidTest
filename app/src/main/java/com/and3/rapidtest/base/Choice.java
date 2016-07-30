@@ -4,9 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by and3 on 28/07/16.
  */
@@ -19,6 +16,25 @@ public class Choice {
     @SerializedName("votes")
     @Expose
     private int votes;
+    @SerializedName("url")
+    @Expose
+    private String url;
+
+    /**
+     *
+     * @return
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     *
+     * @param url
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     /**
      *

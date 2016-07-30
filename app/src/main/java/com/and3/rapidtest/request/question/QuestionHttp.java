@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.and3.rapidtest.base.Question;
 import com.and3.rapidtest.request.RequestManager;
+import com.and3.rapidtest.request.response.IQuestionListener;
 
 import java.util.List;
 
@@ -29,17 +30,23 @@ public class QuestionHttp extends RequestManager {
         return request().create(IQuestion.class);
     }
 
-    public Call<List<Question>> getQuestions() {
-        Call call = api().getQuestions();
+    public Call<List<Question>> getQuestions(final IQuestionListener listener) {
+        Call<List<Question>> call = api().getQuestions();
         call.enqueue(new Callback<List<Question>>() {
             @Override
             public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
                 Log.d(TAG, "onResponse: " + response.body().toString());
+                if (response.isSuccessful()) {
+                    listener.onQuestionsSuccess(response.body());
+                } else {
+                    listener.onQuestionsFailed();
+                }
             }
 
             @Override
             public void onFailure(Call<List<Question>> call, Throwable t) {
                 Log.e(TAG, "onFailure: ", t);
+                listener.onQuestionsFailed();
             }
         });
         return call;
