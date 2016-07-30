@@ -26,7 +26,6 @@ public class Choice {
     private boolean selected;
 
     /**
-     *
      * @return
      */
     public String getUrl() {
@@ -34,7 +33,6 @@ public class Choice {
     }
 
     /**
-     *
      * @param url
      */
     public void setUrl(String url) {
@@ -42,36 +40,28 @@ public class Choice {
     }
 
     /**
-     *
-     * @return
-     * The choice
+     * @return The choice
      */
     public String getChoice() {
         return choice;
     }
 
     /**
-     *
-     * @param choice
-     * The choice
+     * @param choice The choice
      */
     public void setChoice(String choice) {
         this.choice = choice;
     }
 
     /**
-     *
-     * @return
-     * The votes
+     * @return The votes
      */
     public int getVotes() {
         return votes;
     }
 
     /**
-     *
-     * @param votes
-     * The votes
+     * @param votes The votes
      */
     public void setVotes(int votes) {
         this.votes = votes;

@@ -2,18 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.and3.rapidtest.MainActivityFragment"
+    tools:context=".MainFragment"
     tools:showIn="@layout/activity_main">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:paddingBottom="@dimen/padding_main"
         android:text="@string/app_name"
+        android:textColor="@color/white"
         android:textSize="@dimen/label_intro" />
 
     <TextView
@@ -23,8 +26,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="@dimen/fab_margin"
         android:gravity="center"
-        android:textColor="@color/grey_300"
-        android:text="@string/name" />
+        android:text="@string/name"
+        android:textColor="@color/grey_300" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,12 +39,14 @@
             android:id="@+id/buttonBegin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/padding_button"
             android:text="@string/label_begin" />
 
         <Button
             android:id="@+id/buttonCreate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/padding_button"
             android:text="@string/label_create" />
 
     </LinearLayout>

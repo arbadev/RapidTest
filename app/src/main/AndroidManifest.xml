@@ -23,7 +23,7 @@
         <activity
             android:name=".QuestionActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateQuestion"></activity>
+        <activity android:name=".CreateQuestionActivity"></activity>
     </application>
 
 </manifest>

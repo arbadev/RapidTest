@@ -101,4 +101,5 @@
     <string name="save">Guardar</string>
     <string name="saved">Pregunta guardada</string>
     <string name="error_try_later">Error, intente luego. Verifique el internet</string>
+    <string name="please_complete">Por favor, complete todos los campos</string>
 </resources>

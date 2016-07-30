@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="label_intro">33sp</dimen>
+    <dimen name="label_intro">37sp</dimen>
     <dimen name="question">30sp</dimen>
     <dimen name="choice">17sp</dimen>
     <dimen name="padding_choice">9dp</dimen>
@@ -12,4 +12,6 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="margin_choice">5dp</dimen>
     <dimen name="margin_icon_main">8dp</dimen>
+    <dimen name="padding_button">20dp</dimen>
+    <dimen name="padding_main">50dp</dimen>
 </resources>

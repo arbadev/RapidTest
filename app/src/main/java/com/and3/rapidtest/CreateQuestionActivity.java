@@ -17,7 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CreateQuestion extends AppCompatActivity implements IQuestionListener.Created {
+public class CreateQuestionActivity extends AppCompatActivity implements IQuestionListener.Created {
 
     @Bind(R.id.et_question)
     EditText etQuestion;
@@ -59,6 +59,7 @@ public class CreateQuestion extends AppCompatActivity implements IQuestionListen
         }
 
         if (choicesList.isEmpty() || getQuestion().isEmpty()) {
+            Toast.makeText(this, getString(R.string.please_complete), Toast.LENGTH_SHORT).show();
             return;
         }
 

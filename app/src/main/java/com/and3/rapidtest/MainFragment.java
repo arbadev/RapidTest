@@ -13,9 +13,9 @@ import butterknife.OnClick;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainFragment extends Fragment {
 
-    public MainActivityFragment() {
+    public MainFragment() {
     }
 
     @Override
@@ -33,6 +33,6 @@ public class MainActivityFragment extends Fragment {
 
     @OnClick(R.id.buttonCreate)
     public void onCreate(View view) {
-        startActivity(new Intent(getContext(), CreateQuestion.class));
+        startActivity(new Intent(getContext(), CreateQuestionActivity.class));
     }
 }

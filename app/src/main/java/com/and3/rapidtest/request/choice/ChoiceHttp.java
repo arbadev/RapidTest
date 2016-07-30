@@ -2,17 +2,11 @@ package com.and3.rapidtest.request.choice;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
 
 import com.and3.rapidtest.base.Choice;
-import com.and3.rapidtest.base.Question;
 import com.and3.rapidtest.request.RequestManager;
-import com.and3.rapidtest.request.question.IQuestion;
 import com.and3.rapidtest.request.question.QuestionHttp;
 import com.and3.rapidtest.request.response.IChoiceListener;
-import com.and3.rapidtest.request.response.IQuestionListener;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
