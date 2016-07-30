@@ -106,7 +106,7 @@ public class Question implements Parcelable {
         dest.writeString(publishedAt);
     }
 
-    public class Body {
+    public static class Body {
 
         @SerializedName("question")
         @Expose
@@ -114,6 +114,9 @@ public class Question implements Parcelable {
         @SerializedName("choices")
         @Expose
         private List<String> choices = new ArrayList<String>();
+
+        public Body() {
+        }
 
         /**
          * @return The question

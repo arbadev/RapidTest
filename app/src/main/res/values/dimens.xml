@@ -11,4 +11,5 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="margin_choice">5dp</dimen>
+    <dimen name="margin_icon_main">8dp</dimen>
 </resources>

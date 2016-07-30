@@ -27,7 +27,12 @@ public class MainActivityFragment extends Fragment {
     }
 
     @OnClick(R.id.buttonBegin)
-    public void onClick(View view) {
+    public void onQuestions(View view) {
         startActivity(new Intent(getContext(), QuestionActivity.class));
+    }
+
+    @OnClick(R.id.buttonCreate)
+    public void onCreate(View view) {
+        startActivity(new Intent(getContext(), CreateQuestion.class));
     }
 }

@@ -13,13 +13,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Hello World!"
+        android:text="@string/app_name"
         android:textSize="@dimen/label_intro" />
 
-    <Button
-        android:id="@+id/buttonBegin"
+    <TextView
+        android:id="@+id/copy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/label_begin" />
+        android:layout_marginTop="@dimen/fab_margin"
+        android:gravity="center"
+        android:textColor="@color/grey_300"
+        android:text="@string/name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/copy"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonBegin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_begin" />
+
+        <Button
+            android:id="@+id/buttonCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_create" />
+
+    </LinearLayout>
+
 </RelativeLayout>

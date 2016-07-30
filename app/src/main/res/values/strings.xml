@@ -92,4 +92,13 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="label_create">Crear pregunta</string>
+    <string name="name">Andres Barradas © 2016 </string>
+    <string name="question">Pregunta</string>
+    <string name="choice">Opcion</string>
+    <string name="label_op">Op:</string>
+    <string name="label_choices">Choices:</string>
+    <string name="save">Guardar</string>
+    <string name="saved">Pregunta guardada</string>
+    <string name="error_try_later">Error, intente luego. Verifique el internet</string>
 </resources>

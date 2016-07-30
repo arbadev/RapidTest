@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.and3.rapidtest.base.Choice;
 import com.and3.rapidtest.base.Question;
@@ -95,6 +96,8 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
 
     @Override
     public void onQuestionsFailed() {
+        Toast.makeText(this, getString(R.string.error_try_later), Toast.LENGTH_SHORT).show();
+        finish();
         Log.e(TAG, "onQuestionsFailed: ");
     }
 
@@ -130,6 +133,6 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
 
     @Override
     public void onChoiceFailed() {
-
+        Toast.makeText(this, getString(R.string.error_try_later), Toast.LENGTH_SHORT).show();
     }
 }
