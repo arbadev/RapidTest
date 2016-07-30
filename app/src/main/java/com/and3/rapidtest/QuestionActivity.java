@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.and3.rapidtest.base.Choice;
@@ -30,8 +32,6 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
 
     @Bind(R.id.recycler)
     RecyclerView mRecyclerView;
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
 
     private ChoiceAdapter mAdapter;
     private List<Question> mQuestionList;
@@ -41,14 +41,14 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
 
         ButterKnife.bind(this);
         Question.api(this).getQuestions(this);
 
-        setTextToolbar("");
-        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -65,9 +65,9 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
         }
     }
 
-    private void setTextToolbar(String title) {
+    private synchronized void setTextToolbar(String title) {
         if (!title.isEmpty() && !title.contains("?")) title += "?";
-        toolbar.setTitle(title);
+        setTitle(title);
     }
 
     @Override
