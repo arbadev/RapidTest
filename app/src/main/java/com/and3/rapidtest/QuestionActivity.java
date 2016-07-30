@@ -2,6 +2,7 @@ package com.and3.rapidtest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,8 @@ import butterknife.ButterKnife;
 public class QuestionActivity extends AppCompatActivity implements IQuestionListener, ChoiceAdapter.OnItemClickListener {
 
     private static final String TAG = QuestionActivity.class.getSimpleName();
+    private static final String CURRENT = "current";
+    private static final String LIST = "list";
 
     @Bind(R.id.recycler)
     RecyclerView mRecyclerView;
@@ -29,6 +32,9 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
     Toolbar toolbar;
 
     private ChoiceAdapter mAdapter;
+    private List<Question> mQuestionList;
+    private Question mCurrent;
+    private int mPosition;
 
 
     @Override
@@ -49,10 +55,27 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
     }
 
     @Override
+    public void onBackPressed() {
+        mPosition--;
+        if (mPosition >= 0) {
+            mCurrent = mQuestionList.get(mPosition);
+            setList(mCurrent.getChoices());
+            setTextToolbar(mCurrent.getQuestion());
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public void onQuestionsSuccess(List<Question> questionsList) {
         Log.d(TAG, "onQuestionsSuccess: ");
-        setList(questionsList.get(0).getChoices());
-        setTextToolbar(questionsList.get(0).getQuestion());
+        mQuestionList = questionsList;
+        if (mQuestionList != null && !mQuestionList.isEmpty()) {
+            mCurrent = questionsList.get(0);
+            mPosition = 0;
+            setList(mCurrent.getChoices());
+            setTextToolbar(mCurrent.getQuestion());
+        }
     }
 
     @Override
@@ -62,8 +85,18 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
 
     //Recycler
     @Override
-    public void onClick(View view, Choice item) {
-        startActivity(new Intent(this, QuestionActivity.class));
+    public void onClick(View view, Choice item, int position) {
+        mCurrent.getChoices().set(position, item);
+        mQuestionList.set(mPosition, mCurrent);
+        mPosition++;
+        if (mPosition < mQuestionList.size()) {
+            mCurrent = mQuestionList.get(mPosition);
+            setTitle(mCurrent.getQuestion());
+            setList(mCurrent.getChoices());
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void setList(final List<Choice> choices) {

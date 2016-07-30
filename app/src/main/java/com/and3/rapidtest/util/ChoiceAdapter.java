@@ -65,7 +65,8 @@ public class ChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         viewHolderBody.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.onClick(view, item);
+                item.setSelected(true);
+                mListener.onClick(view, item, position);
             }
         });
     }
@@ -88,6 +89,6 @@ public class ChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     // Interface for receiving click events from list items
     public interface OnItemClickListener {
-        void onClick(View view, Choice item);
+        void onClick(View view, Choice item, int position);
     }
 }

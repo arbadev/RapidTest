@@ -1,6 +1,8 @@
 package com.and3.rapidtest.base;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.and3.rapidtest.base.Choice;
 import com.and3.rapidtest.request.question.QuestionHttp;
@@ -15,7 +17,7 @@ import java.util.List;
  * Created by and3 on 28/07/16.
  */
 
-public class Question {
+public class Question implements Parcelable {
 
     @SerializedName("question")
     @Expose
@@ -26,6 +28,23 @@ public class Question {
     @SerializedName("choices")
     @Expose
     private List<Choice> choices = new ArrayList<Choice>();
+
+    protected Question(Parcel in) {
+        question = in.readString();
+        publishedAt = in.readString();
+    }
+
+    public static final Creator<Question> CREATOR = new Creator<Question>() {
+        @Override
+        public Question createFromParcel(Parcel in) {
+            return new Question(in);
+        }
+
+        @Override
+        public Question[] newArray(int size) {
+            return new Question[size];
+        }
+    };
 
     /**
      * @return The question
@@ -74,6 +93,17 @@ public class Question {
         Gson gson = new Gson();
         String json = gson.toJson(this);
         return json;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(question);
+        dest.writeString(publishedAt);
     }
 
     public class Body {

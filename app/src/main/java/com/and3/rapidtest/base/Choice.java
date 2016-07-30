@@ -19,6 +19,7 @@ public class Choice {
     @SerializedName("url")
     @Expose
     private String url;
+    private boolean selected;
 
     /**
      *
@@ -77,5 +78,9 @@ public class Choice {
         Gson gson = new Gson();
         String json = gson.toJson(this);
         return json;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }
