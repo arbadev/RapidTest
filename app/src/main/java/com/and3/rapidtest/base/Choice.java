@@ -89,6 +89,10 @@ public class Choice {
     }
 
 
+    public boolean isSelected() {
+        return selected;
+    }
+
     //**********************************************************************************************
     // HTTP
     //**********************************************************************************************
@@ -96,4 +100,5 @@ public class Choice {
     public static ChoiceHttp api(Context context) {
         return new ChoiceHttp(context);
     }
+
 }

@@ -50,6 +50,20 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
         setSupportActionBar(toolbar);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mQuestionList != null && !mQuestionList.isEmpty()) {
+            if (mPosition == mQuestionList.size()) {
+                mPosition--;
+            }
+            mCurrent = mQuestionList.get(mPosition);
+            setList(mCurrent.getChoices());
+            setTextToolbar(mCurrent.getQuestion());
+        }
+    }
+
     private void setTextToolbar(String title) {
         if (!title.isEmpty() && !title.contains("?")) title += "?";
         toolbar.setTitle(title);

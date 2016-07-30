@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.and3.rapidtest.R;
 import com.and3.rapidtest.base.Choice;
+import com.and3.rapidtest.base.Question;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -21,11 +21,11 @@ import butterknife.ButterKnife;
 /**
  * Created by and3 on 30/07/16.
  */
-public class ChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class QuestionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final String TAG = ChoiceAdapter.class.getSimpleName();
+    private static final String TAG = QuestionAdapter.class.getSimpleName();
 
-    private List<Choice> mList;
+    private List<Question> mList;
     private OnItemClickListener mListener;
     private Context mContext;
 
@@ -39,7 +39,7 @@ public class ChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public ChoiceAdapter(List<Choice> list, OnItemClickListener listener, Context context) {
+    public QuestionAdapter(List<Question> list, OnItemClickListener listener, Context context) {
         mList = list;
         mListener = listener;
         mContext = context;
@@ -56,37 +56,15 @@ public class ChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         ViewHolderBody viewHolderBody = (ViewHolderBody) holder;
 
-        final Choice item = mList.get(position);
+        final Question item = mList.get(position);
 
-        viewHolderBody.tvChoice.setText(item.getChoice());
-
-        Log.d(TAG, "onBindViewHolder: item = " + item.toString());
-
-        if (item.isSelected()) {
-            viewHolderBody.itemView.setBackgroundResource(R.drawable.button_border_selected);
-        } else {
-            viewHolderBody.itemView.setBackgroundResource(R.drawable.button_border);
-        }
-
-        if (isSelectedOne()) {
-            viewHolderBody.itemView.setEnabled(item.isSelected());
-        }
 
         viewHolderBody.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                item.setSelected(true);
                 mListener.onClick(view, item, position);
             }
         });
-    }
-
-    private boolean isSelectedOne() {
-        for (Choice choice :
-                mList) {
-            if (choice.isSelected()) return true;
-        }
-        return false;
     }
 
     @Override
@@ -107,6 +85,6 @@ public class ChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     // Interface for receiving click events from list items
     public interface OnItemClickListener {
-        void onClick(View view, Choice item, int position);
+        void onClick(View view, Question item, int position);
     }
 }
