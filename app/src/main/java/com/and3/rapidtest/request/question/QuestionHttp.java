@@ -51,4 +51,27 @@ public class QuestionHttp extends RequestManager {
         });
         return call;
     }
+
+
+    public Call<Question> postQuestions(Question.Body body, final IQuestionListener.Created listener) {
+        Call<Question> call = api().postQuestion(body);
+        call.enqueue(new Callback<Question>() {
+            @Override
+            public void onResponse(Call<Question> call, Response<Question> response) {
+                Log.d(TAG, "onResponse: " + response.body().toString());
+                if (response.isSuccessful()) {
+                    listener.onQuestionCreatedSuccess(response.body());
+                } else {
+                    listener.onQuestionsCreatedFailed();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Question> call, Throwable t) {
+                Log.e(TAG, "onFailure: ", t);
+                listener.onQuestionsCreatedFailed();
+            }
+        });
+        return call;
+    }
 }

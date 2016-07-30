@@ -10,4 +10,9 @@ import java.util.List;
 public interface IQuestionListener {
     void onQuestionsSuccess(List<Question> questionsList);
     void onQuestionsFailed();
+
+    interface Created {
+        void onQuestionCreatedSuccess(Question question);
+        void onQuestionsCreatedFailed();
+    }
 }
