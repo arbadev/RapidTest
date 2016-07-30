@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.and3.rapidtest.base.Choice;
 import com.and3.rapidtest.base.Question;
+import com.and3.rapidtest.request.response.IChoiceListener;
 import com.and3.rapidtest.request.response.IQuestionListener;
 import com.and3.rapidtest.util.ChoiceAdapter;
 
@@ -20,7 +21,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class QuestionActivity extends AppCompatActivity implements IQuestionListener, ChoiceAdapter.OnItemClickListener {
+public class QuestionActivity extends AppCompatActivity implements IQuestionListener, ChoiceAdapter.OnItemClickListener, IChoiceListener {
 
     private static final String TAG = QuestionActivity.class.getSimpleName();
     private static final String CURRENT = "current";
@@ -86,8 +87,22 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
     //Recycler
     @Override
     public void onClick(View view, Choice item, int position) {
+        Choice.api(this).postChoice(item.getUrl(), this);
         mCurrent.getChoices().set(position, item);
         mQuestionList.set(mPosition, mCurrent);
+    }
+
+    public void setList(final List<Choice> choices) {
+        mRecyclerView.setVisibility(View.VISIBLE);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new ChoiceAdapter(choices, this, this);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onChoiceSuccess() {
         mPosition++;
         if (mPosition < mQuestionList.size()) {
             mCurrent = mQuestionList.get(mPosition);
@@ -99,12 +114,8 @@ public class QuestionActivity extends AppCompatActivity implements IQuestionList
         }
     }
 
-    public void setList(final List<Choice> choices) {
-        mRecyclerView.setVisibility(View.VISIBLE);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new ChoiceAdapter(choices, this, this);
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+    @Override
+    public void onChoiceFailed() {
+
     }
 }

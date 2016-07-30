@@ -12,5 +12,6 @@ import retrofit2.http.Url;
 public interface IChoice {
 
     @POST
-    Call<Choice> choice(@Url String choiceUrl);
+    Call<Choice> postChoice(@Url String choiceUrl);
+
 }

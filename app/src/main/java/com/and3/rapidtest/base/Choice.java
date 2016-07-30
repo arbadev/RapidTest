@@ -1,5 +1,9 @@
 package com.and3.rapidtest.base;
 
+import android.content.Context;
+
+import com.and3.rapidtest.request.choice.ChoiceHttp;
+import com.and3.rapidtest.request.question.QuestionHttp;
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -82,5 +86,14 @@ public class Choice {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
+    }
+
+
+    //**********************************************************************************************
+    // HTTP
+    //**********************************************************************************************
+
+    public static ChoiceHttp api(Context context) {
+        return new ChoiceHttp(context);
     }
 }
